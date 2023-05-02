@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import '../assets/styles/Components/Output.css'
 
 const Output = () => {
 
@@ -7,7 +8,8 @@ const Output = () => {
 
   return (
     <div className="output-wrapper" >
-      <p className="output-result" data-testid="result">= {series}</p>
+      <h4>El resultado es:</h4>
+      <p className="output-result" data-testid="result">{series}</p>
     </div>
   )
 }

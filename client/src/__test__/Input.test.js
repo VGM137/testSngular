@@ -21,7 +21,7 @@ const setup = () => {
       <Output />
     </Provider>
   )
-  const input = screen.getByLabelText('Ingresa el valor de "n"')
+  const input = screen.getByLabelText("Ingresa el valor de 'n'")
   const output = screen.getByTestId("result")
   return {
     input,

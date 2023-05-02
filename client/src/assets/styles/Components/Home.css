@@ -1,11 +1,15 @@
 .home-wrapper{
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   justify-content: center;
   align-items: center;
   max-width: 1440px;
   margin: auto;
   padding: 30px;
+  min-height: 100vh;
+}
+.home-wrapper h2, .home-wrapper h3{
+  margin: 0;
 }
