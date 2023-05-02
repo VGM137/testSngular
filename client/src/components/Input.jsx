@@ -67,7 +67,7 @@ const Input = () => {
 
   return (
     <div className="input-wrapper">
-      <p className="input-process__title">Para resolver la siguiente ecuación debes asignar un valor a 'n</p>
+      <p className="input-process__title">Para resolver la siguiente ecuación debes asignar un valor a 'n'</p>
       <div className="process-wrapper">
         <div className="input-description__wrapper">
           <div className="input-descripcion__operation">
