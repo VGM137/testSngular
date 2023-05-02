@@ -14,11 +14,9 @@ const Input = () => {
   let [isShowing, setShowing] = useState(false)
   let dispatch = useDispatch()
 
-  let process = document.querySelector('.process-wrapper')
-
   const handleChange = (e) => {
     let targetValue = e.target.value
-    let invalid = targetValue === '' || targetValue === '0' || targetValue === '1' || targetValue == 2
+    let invalid = targetValue === '' || targetValue === '0' || targetValue === '1' || targetValue == 2 || parseInt(e.target.value) > 9999
     
     if(!invalid){
       setShowing(true)
@@ -39,9 +37,11 @@ const Input = () => {
       
       dispatch(seriesValue(newSeriesValue ))
     }else{
+      e.preventDefault()
       e.target.classList.add('invalid')
       e.target.classList.remove('valid')
-      process.classList.contains('active') ? process.classList.remove('active') : process.classList.add('active')
+      let process = document.querySelector('.process-wrapper')
+      process?.classList.contains('active') && process.classList.remove('active')
       setShowing(false)
       setValue('n')
       setPrimo('primo(n+3)')
@@ -54,7 +54,8 @@ const Input = () => {
   const handleClick = (e) => {
     e.stopPropagation()
     e.preventDefault()
-    process.classList.contains('active') ? process.classList.remove('active') : process.classList.add('active')
+    let process = document.querySelector('.process-wrapper')
+    process?.classList.contains('active') ? process.classList.remove('active') : process.classList.add('active')
     console.log(process)
   }
 
@@ -66,16 +67,7 @@ const Input = () => {
 
   return (
     <div className="input-wrapper">
-      <input 
-      aria-labelledby="inputN" 
-      className="input-number" 
-      placeholder="0" 
-      type="number" 
-      min={0} 
-      onChange={(e) => handleChange(e)} 
-      onBlur={(e) => handleBlur(e)}/>
-      <label data-not-allowed='*Número inválido' id="inputN" htmlFor='inputN'>Ingresa el valor de 'n'</label>
-      <p className="input-process__title">Para resolver la ecuación debes asignar un valor a 'n</p>
+      <p className="input-process__title">Para resolver la siguiente ecuación debes asignar un valor a 'n</p>
       <div className="process-wrapper">
         <div className="input-description__wrapper">
           <div className="input-descripcion__operation">
@@ -113,6 +105,16 @@ const Input = () => {
         </>
         }
       </div>
+      <input 
+        aria-labelledby="inputN" 
+        className="input-number" 
+        placeholder="0" 
+        type="number" 
+        min={0} 
+        max={99999}
+        onChange={(e) => handleChange(e)} 
+        onBlur={(e) => handleBlur(e)}/>
+      <label data-not-allowed='*Número inválido' id="inputN" htmlFor='inputN'>Ingresa el valor de 'n'</label>
     </div>
   )
 }
